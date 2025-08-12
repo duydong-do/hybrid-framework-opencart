@@ -3,7 +3,7 @@
 <suite name="OpenCart">
     <test name="Test">
         <classes>
-            <class name="testCases.TC_001"/>
+            <class name="testCases.TC_001_Register_Account"/>
         </classes>
     </test>
 </suite>
