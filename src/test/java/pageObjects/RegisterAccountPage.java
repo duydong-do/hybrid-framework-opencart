@@ -35,7 +35,7 @@ public class RegisterAccountPage extends BasePage {
     @FindBy(xpath = "//input[@type='submit' and @value='Continue']")
     private WebElement continueButton;
 
-    @FindBy(xpath = "//div[@id='content']/h1[text()='Your Account Has Been Created!']")
+    @FindBy(xpath = "//div[@id='content']/h1")
     private WebElement registerSuccessMessage;
 
     public void sendKeysToFirstNameTextbox(String firstName) {
@@ -78,8 +78,8 @@ public class RegisterAccountPage extends BasePage {
         continueButton.click();
     }
 
-    public boolean isRegisterSuccessMessageDisplayed() {
-        return registerSuccessMessage.isDisplayed();
+    public String getRegisterSuccessMessage() {
+        return registerSuccessMessage.getText();
     }
 
 }
