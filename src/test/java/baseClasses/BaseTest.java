@@ -10,23 +10,30 @@ import org.testng.annotations.AfterClass;
 import org.testng.annotations.BeforeClass;
 import org.testng.annotations.Parameters;
 
+import java.io.FileReader;
+import java.io.IOException;
 import java.time.Duration;
+import java.util.Properties;
 import java.util.Random;
 
 public class BaseTest {
     protected WebDriver driver;
     protected Logger logger;
+    private Properties properties;
 
     @BeforeClass
     @Parameters("browser")
-    protected void beforeClass(String browserName) {
+    protected void beforeClass(String browserName) throws IOException {
+        FileReader file = new FileReader("./src/test/resources/config.properties");
+        properties = new Properties();
+        properties.load(file);
+
         logger = LogManager.getLogger(this.getClass());
 
         driver = initBrowser(browserName);
-
         driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(30));
         driver.manage().window().maximize();
-        driver.get("http://localhost/opencart/upload/");
+        driver.get(properties.getProperty("appUrl"));
     }
 
     @AfterClass
