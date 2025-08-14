@@ -38,7 +38,6 @@ public class TC_001_Register_Account extends BaseTest {
         registerAccountPage.clickContinueButton();
 
         logger.info("Verify expected message");
-        // Assert.assertEquals(registerAccountPage.getRegisterSuccessMessage(), "Your Account Has Been Created!");
         if (registerAccountPage.getRegisterSuccessMessage().equals("Your Account Has Been Created!")) {
             logger.info("---------- PASSED ----------");
             Assert.assertTrue(true);
